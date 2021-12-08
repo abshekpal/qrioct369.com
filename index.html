@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            width:100%;
+            height:100vh;
+            background: url("BG\ 5.jpg");
+            background-size:cover;
+            background-position: center;
+            background-repeat: none;
+        }
+        .wrapper{
+            height:auto;
+            position: relative;
+        }
+        .wrapper a{
+            height:100vh;
+            width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            position: fixed;
+        }
+        .text {
+            -webkit-animation: spin 50s linear infinite;
+            -moz-animation: spin 50s linear infinite;
+            animation: spin 50s linear infinite;
+        }
+        @-webkit-keyframes spin {
+            100%{-webkit-transform:rotate(360deg);}
+        }
+        @-moz-keyframes spin {
+            100%{-webkit-transform:rotate(360deg);}
+        }
+        @keyframes spin {
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width:600px){
+           .text {
+               height:500px;
+               object-fit: cover;
+           }
+           .logo {
+               
+               object-fit: cover;
+           }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <a href="">
+            <img class="text" src="./text.png" width="auto" height="600px" alt="">
+            <img class="logo" src="./logo2.png" width="230px" height="230px" alt="">
+        </a>
+    </div>
+</body>
+</html>
