@@ -40,6 +40,41 @@
             -moz-animation: spin 50s linear infinite;
             animation: spin 50s linear infinite;
         }
+
+        .cover {
+            position: fixed;
+            height:100vh;
+            width:100%;
+            top:0;
+            left:-100vw;
+            z-index: 1000;
+        }
+        .transition.slide .cover1 {
+            background-color: skyblue;
+            animation: slide 0.3s ease-in-out forwards;
+        }
+        .transition.slide .cover2 {
+            background-color: teal;
+            animation: slide 0.3s ease-in-out forwards;
+            animation-delay: 0.3s;
+
+        }
+        .transition.slide .cover3 {
+            background-color: #094992;
+            animation: slide 0.3s ease-in-out forwards;
+            animation-delay: 0.6s;
+        }
+        @keyframes slide {
+            form{
+                left:-100vw;
+            }
+            to{
+                left:0;
+            }
+        }
+
+
+
         @-webkit-keyframes spin {
             100%{-webkit-transform:rotate(360deg);}
         }
@@ -66,12 +101,33 @@
 <body>
     <div class="wrapper">
         <div class="container">
+
+            <div class="transition">
+                <div class="cover cover1"></div>
+                <div class="cover cover2"></div>
+                <div class="cover cover3"></div>
+            </div>
+
+
+
+
             <img class="text" src="./text.png" width="auto" height="600px" alt="">
-            <a href="./indexsite.html">
+            <a href="./indexsite.html" class="link">
                 <img class="logo" src="./logo2.png" width="230px" height="230px" alt="">
             </a>
         </div>
             
     </div>
+    <script>
+        const link = document.querySelector(".link");
+        const transition = document.querySelector(".transition");
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            transition.classList.add("slide");
+            setTimeout(()=> {
+                window.location = link.href;
+            }, 900);
+        });
+    </script>
 </body>
 </html>
