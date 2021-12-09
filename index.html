@@ -22,7 +22,7 @@
             height:auto;
             position: relative;
         }
-        .wrapper a{
+        .wrapper .container{
             height:100vh;
             width:100%;
             display: flex;
@@ -31,6 +31,9 @@
         }
         img {
             position: fixed;
+        }
+        .logo{
+            position:relative;
         }
         .text {
             -webkit-animation: spin 50s linear infinite;
@@ -55,7 +58,6 @@
                object-fit: cover;
            }
            .logo {
-               
                object-fit: cover;
            }
         }
@@ -63,10 +65,13 @@
 </head>
 <body>
     <div class="wrapper">
-        <a href="">
+        <div class="container">
             <img class="text" src="./text.png" width="auto" height="600px" alt="">
-            <img class="logo" src="./logo2.png" width="230px" height="230px" alt="">
-        </a>
+            <a href="">
+                <img class="logo" src="./logo2.png" width="230px" height="230px" alt="">
+            </a>
+        </div>
+            
     </div>
 </body>
 </html>
