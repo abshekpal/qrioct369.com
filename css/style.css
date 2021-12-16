@@ -48,19 +48,6 @@ body {
     overflow-x: hidden;
 }
 
-#progress {
-    background-color: var(--txt3);
-    height: 4px;
-    border-radius: 2px;
-    width: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
-}
-
-
-
 
 /* ********** Navbar ********** */
 header {
@@ -71,7 +58,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1a1a1a;
+    background: transparent;
     z-index: 3;
     transition: 0.5s;
 }
@@ -120,17 +107,50 @@ header .toggle {
 /* ********** HOME ********** */
 
 #home {
-    background: #1a1a1a;
     position: relative;
+    background-image: url(./images/bg.jpg);
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 60px 100px;
     height: 100vh;
+    width: 100vw;          
+
 }
 
+#home::before {
+    content:'';
+    width:100%;
+    height:350px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background:linear-gradient(to top,#000,transparent);
+}
+
+#home::after {
+    content:'';
+    width:100%;
+    height:350px;
+    position:absolute;
+    top:0;
+    left:0;
+    background:linear-gradient(to bottom,#000,transparent);
+}
+
+#home .herobg {
+    position: relative;
+    top:0;
+    background-size:cover;
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
 #home .content {
     margin-right: 60px;
+    z-index: 1;
 }
 
 #home h5 {
@@ -153,16 +173,17 @@ header .toggle {
     line-height: 22px;
     font-size: 15px;
     padding-bottom: 50px;
+    width:60%;
 }
 
 #home a.scroll {
     color: #fbca41;
     text-transform: uppercase;
     font-size: 15px;
-    border: 1px solid #fbca41;
-    padding: 8px;
+    border: 1.5px solid #fbca41;
+    padding: 8px 10px;
     font-size: 13px;
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 #home a.scroll:hover {
@@ -405,11 +426,10 @@ header .toggle {
     width: 100%;
     height: auto;
     background: #1a1a1a;
-    padding: 60px 0px 250px 0px;
+    padding: 60px 0px 150px 0px;
     display: block;
     background: -webkit-linear-gradient(to right, #fbca41, #f8ad0a);
-    /* Chrome 10-25, Safari 5.1-6 */
-   position: relative;
+    position: relative;
     background: linear-gradient(to bottom, #fbca41, #f8ad0a);
 }
 
@@ -453,71 +473,80 @@ header .toggle {
     margin: 0 auto;
 }
 
-#works .container {
-    width: 100%;
-    display: grid;
-    grid-auto-flow: dense;
-    grid-template:
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh;
-  }
-  
-  #works .container .box {
-    position: relative;
-    background: #ccc;
-  }
-  #works  .container .box.a {
-    grid-row: span 2;
-  }
-  #works .container .box.b,
-  #works .container .box.f,
-  #works .container .box.h,
-  #works .container .box.j {
-    grid-column: span 2;
-  }
-
-  #works .container .box img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+ #works .wrapper {
+    max-width: 75rem;
+    padding:2rem;
+    margin:0 auto;
+}
+.gallery {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:repeat(4, 12rem);
+    gap:.5rem;
+    
+}
+.galleryimage {
+    width:100%;
+    height:100%;
     object-fit: cover;
-  }
+    transition: transform .5s;
+}
+.gallery_item {
+    border-radius: 10px;
+}
+.gallery_item1 {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+.gallery_item2 {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+.gallery_item3 {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+}
+.gallery_item4 {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 3;
+}
+.gallery_item5 {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+}
+.gallery_item6 {
+    grid-column: 3 / span 1;
+    grid-row: 4 / span 1;
+}
+.gallerylink{
+    position:relative;
+    display: block;
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    border-radius: 10px;
 
-  #works .content-2 {
-      width:100%;
-      height:auto;
-      padding:0px 100px;
-      display: flex;
-      justify-content: center;
-  }
-
-
-  #works .content-2 a.morebtn {
-    text-transform: uppercase;
-    font-size: 15px;
-    border: 2px solid #000;
-    padding: 8px 40px;
-    font-size: 13px;
-    background:transparent;
-    color:#000;
+}
+.galleryoverlay{
     position: absolute;
-    bottom:140px;
-    border-radius: 4px;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+.gallerylink:hover .galleryoverlay {
+    opacity: 0;
+}
+.gallerylink:hover .galleryimage {
+    transform: scale(1.2);
+}
 
-  }
 
-  #works .content-2 a.morebtn:hover {
-      background:#000;
-      color:#fff;
-  }
-
-
-
-
-  #works .custom-shape-divider-bottom-1634474221 {
+#works .custom-shape-divider-bottom-1634474221 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -538,20 +567,47 @@ header .toggle {
     fill: #ffd04f;
 }
 
+.morebtn{
+    width:100%;
+    position: relative;
+    margin-top: 50px;
+}
 
+.morebtn a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: 2px solid #fff;
+    color:#fff;
+    padding: 8px 28px;
+    font-size: 13px;
+    border-radius: 18px;
+    background:none;
+}
+.morebtn a:hover {
+    color:#000;
+    cursor: pointer;
+    border: 1px solid #000;
 
-
-
+}
 
 /* ********** CONTACT ********** */
 
-.wrapper {
+#contact {
     width: 100%;
     height: 100vh;
     display: flex;
     background: url("./images/contact.jpg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .left {
@@ -877,64 +933,46 @@ h5 {
 
     #works {
         height: auto;
-        padding: 60px 0px 200px 0;
-        height: auto;
-    }
-
-    #works .content-2 {
-        width:100%;
-        height:auto;
-        padding:0px 50px;
-    }
-
-    #works .content-2 .container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #works .content-2 .container .item1 {
-        grid-column: span 1;
+        padding: 60px 0px 140px 0;
     }
 
     #works .content p {
         color: #ffffff;
         width: 90%;
-
     }
 
-    #works .content-2 .container {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 1fr);
-        justify-content: center;
+    .wrapper{
+        padding:1rem;
     }
-
-    #works  .container {
-        grid-template:
-          "1fr 1fr 1fr" 250px
-          "1fr 1fr 1fr" 250px
-          "1fr 1fr 1fr" 250px
-          "1fr 1fr 1fr" 250px
-          "1fr 1fr 1fr" 250px;
-      }
-
-      #works .content-2 a.morebtn {
-          bottom:130px;
-      }
-
+    .gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery_item1 {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+    .gallery_item2 {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+    .gallery_item3 {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 2;
+    }
+    .gallery_item4 {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 2;
+    }
+    .gallery_item5 {
+        grid-column: 2 / span 1;
+        grid-row: 3 / span 1;
+    }
+    .gallery_item6 {
+        grid-column: 2 / span 1;
+        grid-row: 4 / span 1;
+    }
 
     #contact {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-
-    #contact .container .content-2 {
-        display: flex;
-        align-items: center;
-    }
-
-    .wrapper {
         display: block;
         height: auto;
     }
@@ -1026,20 +1064,18 @@ h5 {
     }
 
     #works {
-        padding:60px 20px 200px;
+        padding:60px 20px 140px;
     }
 
-    #works  .container {
-        grid-template:
-          "1fr 1fr" 200px
-          "1fr 1fr" 200px
-          "1fr 1fr" 200px
-          "1fr 1fr" 200px
-          "1fr 1fr" 200px
-          "1fr 1fr" 200px
-          "1fr" 200px
-          "1fr 1fr" 200px;
-      }
+    .gallery{
+        display: block;
+    }
+    .galleryitem{
+        margin:.5rem;
+    }
+    .gallerylink{
+        height:80vw;
+    }
 
    #contact {
         display: flex;
@@ -1050,11 +1086,6 @@ h5 {
     #contact .container .content-2 {
         display: flex;
         align-items: center;
-    }
-
-    .wrapper {
-        display: block;
-        height: auto;
     }
 
     .left {
