@@ -14,6 +14,7 @@
     width: 100vw;  
     background-color: #ffcf00;        
 }
+
 img {
     background-position: center;
     background-size: cover;
@@ -31,7 +32,6 @@ img {
         align-items: center;
         height:auto;
     }
-
 }
 
 @media (max-width:600px) {
