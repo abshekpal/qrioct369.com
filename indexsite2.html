@@ -42,12 +42,6 @@
         }
         .banner .logo{
             width:900px;
-            /* position: absolute;
-            left: 50%;
-            bottom:-70px;
-            -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%); */
             opacity: 0.2;
             padding-top: 60px;
         }
@@ -77,6 +71,9 @@
             }
 
             @media (max-width:600px) {
+                .banner{
+                    max-height: 100vh;
+                }
                 .banner .logo{
                     width:100%;
                     padding-top: 30px;
